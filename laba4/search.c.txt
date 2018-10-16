@@ -1,0 +1,52 @@
+/**
+ * helpers.c
+ *
+ * Computer Science 50
+ * Problem Set 3
+ *
+ * Helper functions for Problem Set 3.
+ */
+
+#include <cs50.h>
+
+#include "helpers.h"
+
+bool search(int needle, int haystack[], int size)
+{
+    int m = size-1;
+    int n = 0;
+
+    while (m >= n)
+    {
+        int middle = (n + m) / 2;
+        if (haystack[middle] == needle)
+            return true;
+        else if (haystack[middle] > needle)
+            m = middle - 1;
+        else
+            n = middle + 1;
+    }
+    return false;
+    // TODO: implement a searching algorithm
+    if (size < 0)
+        return false;
+    else
+        return search(needle, haystack, size);
+}
+void sort(int haystack[], int size)
+{
+    int koks;
+    for (int i = 0; i < size; i++)
+    {
+        int small = i;
+        for (int j = i+1; j < size; j++)
+        {
+            if (haystack[small] > haystack[j])
+                small = j;
+        }
+        koks = haystack[small];
+        haystack[small] = haystack[i];
+        haystack[i] = koks;
+    return;
+    }
+}
